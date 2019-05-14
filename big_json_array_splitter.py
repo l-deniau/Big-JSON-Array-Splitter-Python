@@ -26,6 +26,7 @@ def print_usage():
 def main(argv):
     if len(argv) < 2 or len(argv) > 3:
         print_usage()
+        sys.exit(1)
     else:
         input_file = argv[0]
         id_key = argv[1]
@@ -35,9 +36,7 @@ def main(argv):
             input_filter = None
         directory_output = os.path.splitext(input_file)[0]
         json_file = open(input_file, "r", encoding="UTF-8")
-        json_raw = json_file.read()
-        json_decode = json.JSONDecoder()
-        json_data = json_decode.decode(json_raw)
+        json_data = json.load(json_file)
         try:
             os.mkdir(directory_output)
         except FileExistsError:
@@ -46,12 +45,11 @@ def main(argv):
             try:
                 json_chunk_raw = json.dumps(chunk, ensure_ascii=False)
                 if input_filter is None or input_filter in json_chunk_raw:
-                    chunk_key = chunk.get(id_key)
-                    file_name = chunk_key + ".json"
-                    file_chunk = open(directory_output + "/" +
-                                      file_name, "w", encoding="UTF-8")
+                    file_name = chunk.get(id_key) + ".json"
+                    file_path = os.path.join(directory_output, file_name)
+                    file_chunk = open(file_path, "w", encoding="UTF-8")
                     file_chunk.write(json_chunk_raw)
-            except:
+            except Exception:
                 print(chunk)
                 raise
 
