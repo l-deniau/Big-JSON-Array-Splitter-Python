@@ -5,23 +5,27 @@ import os
 import json
 
 
+def print_usage():
+    print()
+    print("Error: wrong number of arguments")
+    print()
+    print("Usage: python big_json_array_splitter.py <json_file> <id_key> "
+          "<filter>")
+    print()
+    print("With:")
+    print()
+    print("    <json_filter>: the json file to split")
+    print()
+    print("    <id_key>: the unique key of each json object (used for the "
+          "filename of splitted json object)")
+    print()
+    print("    <filter> (optional): filter to retrieve only specific data")
+    print()
+
+
 def main(argv):
     if len(argv) < 2 or len(argv) > 3:
-        print()
-        print("Error: wrong number of arguments")
-        print()
-        print("Usage: python big_json_array_splitter.py <json_file> <id_key> "
-              "<filter>")
-        print()
-        print("With:")
-        print()
-        print("    <json_filter>: the json file to split")
-        print()
-        print("    <id_key>: the unique key of each json object (used for the "
-              "filename of splitted json object)")
-        print()
-        print("    <filter> (optional): filter to retrieve only specific data")
-        print()
+        print_usage()
     else:
         input_file = argv[0]
         id_key = argv[1]
