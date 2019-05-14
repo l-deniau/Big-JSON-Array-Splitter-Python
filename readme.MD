@@ -24,7 +24,7 @@ python big_json_array_splitter.py <json_file> <id_key> <filter>
 ```
 
 With :
-+ <json_filter> : the json file to split
++ <json_file> : the json file to split
 + <id_key> : the unique key of each json object (used for the filename of splitted json object)
 + \<filter> (optional) : filter to retrieve only specific data
 

@@ -14,7 +14,7 @@ def print_usage():
     print()
     print("With:")
     print()
-    print("    <json_filter>: the json file to split")
+    print("    <json_file>: the json file to split")
     print()
     print("    <id_key>: the unique key of each json object (used for the "
           "filename of splitted json object)")
